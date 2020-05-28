@@ -1,12 +1,26 @@
-import React from 'react'
+import React from 'react';
+import styled from '@emotion/styled';
 
+const HeaderContainer = styled.header`
+    background-color: #26c6DA;
+    padding: 10px;
+    font-weight: bold;
+    color: #FFFFFF;
+`;
+
+const HeaderText = styled.h1`
+    font-size: 2rem;
+    margin: 0;
+    font-family: 'Slabo 27px', serif;
+    text-align: center;
+`
 const Header = ({title}) => {
     return ( 
-        <header>
-            <h1>
+        <HeaderContainer>
+            <HeaderText>
                 {title}
-            </h1>
-        </header>
+            </HeaderText>
+        </HeaderContainer>
      );
 }
  
