@@ -23,3 +23,8 @@ export function calculateBrand(brand){
 
     return increment;
 }
+
+// Calculates insurance plan
+export function getPlan(plan){
+    return (plan === 'basic') ? 1.2 : 1.5;
+}
