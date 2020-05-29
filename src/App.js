@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import styled from '@emotion/styled';
 import Form from './components/Form';
+import Summary from './components/Summary';
+
 
 const Container = styled.div`
   max-width: 600px;
@@ -14,6 +16,20 @@ const FormContainer = styled.div`
 `;
 
 function App() {
+
+  const [ summary, saveSummary] = useState({
+    quoting: 0,
+    data: {
+      brand: '',
+      year: '',
+      plan: ''
+    }
+  });
+
+  // Destructur data
+  const { data } = summary;
+  console.log(data);
+
   return (
     <Container>
       <Header 
@@ -22,8 +38,11 @@ function App() {
 
       <FormContainer>
         <Form 
+          saveSummary={saveSummary}
         />
+        <Summary />
       </FormContainer>
+
     </Container>
 
   

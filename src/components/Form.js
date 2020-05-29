@@ -52,7 +52,7 @@ const Error = styled.div`
     margin-bottom: 2rem;
 `;
 
-const Form = () => {
+const Form = ({saveSummary}) => {
     
     const [ data, saveData ] = useState({
         brand: '',
@@ -108,7 +108,10 @@ const Form = () => {
         result = parseFloat(planIncrement * result).toFixed(2);
 
         // Total
-        console.log(result);
+        saveSummary({
+            quoting: result,
+            data
+        })
 
     }
 
