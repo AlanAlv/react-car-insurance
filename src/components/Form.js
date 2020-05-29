@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from '@emotion/styled';
 
 const Field = styled.div`
@@ -43,11 +43,33 @@ const Button = styled.button`
 `;
 
 const Form = () => {
+    
+    const [ data, saveData ] = useState({
+        brand: '',
+        year: '',
+        plan: ''
+    });
+
+    // Destructure data
+    const { brand, year, plan} = data;
+
+    // Read form data and save in state
+    const getData = e => {
+        saveData({
+            ...data,
+            [e.target.name]: e.target.value
+        })
+    }
+
     return (  
         <form>
             <Field>
                 <Label>Brand</Label>
-                <Select>
+                <Select
+                    name="brand"
+                    value={brand}
+                    onChange={getData}
+                >
                     <option value="">-- Select --</option>
                     <option value="american">-- American --</option>
                     <option value="european">-- European --</option>
@@ -58,7 +80,11 @@ const Form = () => {
 
             <Field>
                 <Label>Year</Label>
-                <Select>
+                <Select
+                    name="year"
+                    value={year}
+                    onChange={getData}
+                >
                     <option value="">-- Seleccione --</option>
                     <option value="2021">2021</option>
                     <option value="2020">2020</option>
@@ -79,11 +105,15 @@ const Form = () => {
                     type="radio" 
                     name="plan" 
                     value="basic"
+                    checked={plan === "basic"}
+                    onChange={getData}
                 /> Basic
                 <InputRadio 
                     type="radio" 
                     name="plan" 
                     value="complete"
+                    checked={plan === "complete"}
+                    onChange={getData}
                 /> Complete
             </Field>
             <Button type="button">
