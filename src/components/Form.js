@@ -42,6 +42,15 @@ const Button = styled.button`
     }
 `;
 
+const Error = styled.div`
+    background-color: red;
+    color: white;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+`;
+
 const Form = () => {
     
     const [ data, saveData ] = useState({
@@ -49,6 +58,8 @@ const Form = () => {
         year: '',
         plan: ''
     });
+
+    const [ error, saveError] = useState(false);
 
     // Destructure data
     const { brand, year, plan} = data;
@@ -61,8 +72,24 @@ const Form = () => {
         })
     }
 
+    // User clicks submit
+    const quoteInsurance = e => {
+        e.preventDefault();
+
+        if(brand.trim() === '' || year.trim() === '' || plan.trim === ''){
+            saveError(true);
+            return;
+        }
+
+        saveError(false);
+
+    }
+
     return (  
-        <form>
+        <form
+            onSubmit={quoteInsurance}
+        >
+            {error ? <Error>All fields are required</Error> : null}
             <Field>
                 <Label>Brand</Label>
                 <Select
@@ -116,7 +143,7 @@ const Form = () => {
                     onChange={getData}
                 /> Complete
             </Field>
-            <Button type="button">
+            <Button type="submit">
                 Quote
             </Button>
         </form>
