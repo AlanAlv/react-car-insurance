@@ -28,3 +28,8 @@ export function calculateBrand(brand){
 export function getPlan(plan){
     return (plan === 'basic') ? 1.2 : 1.5;
 }
+
+// Capitalize first letter
+export function firstUpper(text){
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}

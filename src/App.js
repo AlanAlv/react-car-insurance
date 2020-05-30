@@ -40,7 +40,11 @@ function App() {
         <Form 
           saveSummary={saveSummary}
         />
-        <Summary />
+
+        
+        <Summary 
+          data={data}
+        />
       </FormContainer>
 
     </Container>
